@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/graph"
+            app:startDestination="@id/mainFragment">
+
+
+    <fragment
+            android:id="@+id/mainFragment"
+            android:name="com.eltonkola.thename.ui.main.MainFragment"
+            android:label="Main"
+            tools:layout="@layout/fragment_main">
+
+        <action android:id="@+id/action_main_to_details" app:destination="@id/detailsFragment"/>
+
+        <action android:id="@+id/action_main_to_list_all" app:destination="@id/listFragment"/>
+
+        <action android:id="@+id/action_main_to_explore" app:destination="@id/exploreFragment"/>
+
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/exploreFragment"
+            android:name="com.eltonkola.thename.ui.explore.ExploreFragment"
+            android:label="Explore"
+            tools:layout="@layout/fragment_explore">
+
+        <action android:id="@+id/action_explore_to_details" app:destination="@id/detailsFragment"/>
+
+        <action android:id="@+id/action_explore_to_main" app:destination="@id/mainFragment"/>
+
+
+    </fragment>
+
+
+    <fragment
+            android:id="@+id/listFragment"
+            android:name="com.eltonkola.thename.ui.list.ListFragment"
+            android:label="List"
+            tools:layout="@layout/fragment_list">
+
+        <action android:id="@+id/action_list_to_details" app:destination="@id/detailsFragment"/>
+
+        <action android:id="@+id/action_list_to_main" app:destination="@id/mainFragment"/>
+
+    </fragment>
+
+
+    <fragment android:id="@+id/detailsFragment"
+              android:name="com.eltonkola.thename.ui.details.DetailsFragment"
+              android:label="details"
+              tools:layout="@layout/fragment_details">
+
+        <argument
+                android:name="emri"
+                app:argType="com.eltonkola.thename.model.db.Emri"
+        />
+
+
+        <action android:id="@+id/action_details_to_main" app:destination="@id/mainFragment"/>
+        <action android:id="@+id/action_details_to_explore" app:destination="@id/exploreFragment"/>
+        <action android:id="@+id/action_details_to_list" app:destination="@id/mainFragment"/>
+
+    </fragment>
+
+
+</navigation>
