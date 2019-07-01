@@ -15,7 +15,9 @@ import com.eltonkola.adapterz_lib.CompositeViewRenderZ
 import com.eltonkola.adapterz_lib.ViewRenderZ
 import com.eltonkola.thename.R
 import com.eltonkola.thename.model.*
+import com.eltonkola.thename.utils.toast
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.main_header.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -33,6 +35,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+//
+//        appBar.setLogo(R.mipmap.ic_launcher)
+//        appBar.title = "Pinko Palino"
 
         val adapter = AdapterZ()
         //fav horizontal scroll
@@ -67,7 +73,12 @@ class MainFragment : Fragment() {
 //            .setPositiveButton("Ok", null)
 //            .show()
 
+
+        toggle_button_group.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            toast("Selected: $checkedId")
+        }
     }
+
 
     private fun bindFavoritedItem(): CompositeViewRenderZ<FavoritedItem> {
         return CompositeViewRenderZ(
@@ -130,7 +141,8 @@ class MainFragment : Fragment() {
             R.layout.row_thumbed_list, { _, _ -> },
             R.id.childRecyclerList
         ) { recycler ->
-            recycler.layoutManager = LinearLayoutManager(recycler.context, RecyclerView.VERTICAL, false)
+            recycler.layoutManager =
+                LinearLayoutManager(recycler.context, RecyclerView.VERTICAL, false)
             recycler.setHasFixedSize(true)
         }
     }

@@ -6,7 +6,10 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.eltonkola.adapterz_lib.BaseDataItem
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.parcel.Parcelize
+
 
 @Entity(
     indices = arrayOf(Index(value = ["favorite", "frequency", "thumb", "male"])),
@@ -22,11 +25,13 @@ data class Emri(
     @ColumnInfo(name = "peryear") var peryear: String
 ) : BaseDataItem, Parcelable {
 
-//    @PrimaryKey(autoGenerate = true)
+    //    @PrimaryKey(autoGenerate = true)
 //    var uid: Int = 0
 //
-//    fun getPerYerData() {
-//        //return Map<Int, Int>
-//    }
+    fun getPerYerData(): Map<String, String> {
+
+        val type = object : TypeToken<Map<String, String>>() {}.type
+        return Gson().fromJson(peryear, type)
+    }
 
 }

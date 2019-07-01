@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.florent37.shapeofview.shapes.ArcView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="4dp"
+        app:shape_arc_height="16dp"
+        app:shape_arc_position="bottom">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pic_1" />
+
+        <ImageView
+                android:id="@+id/logo"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="16dp"
+                android:src="@mipmap/ic_launcher_round"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:src="@mipmap/ic_launcher_round"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+        <TextView
+                android:id="@+id/emri"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Dionis"
+                android:textColor="#1B1B1B"
+                android:textSize="38dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/mbiemri"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avatar"
+                app:layout_constraintTop_toTopOf="@+id/avatar" />
+
+        <TextView
+                android:id="@+id/mbiemri"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Kola"
+                android:textColor="#1B1B1B"
+                android:textSize="36dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avatar"
+                app:layout_constraintTop_toBottomOf="@+id/emri" />
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:paddingTop="16dp"
+                android:text="Click on the last name to change it. When staring a name, will show as the selected one."
+                android:textColor="#1B1B1B"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/mbiemri"
+                app:layout_constraintStart_toStartOf="@+id/mbiemri"
+                app:layout_constraintTop_toBottomOf="@+id/mbiemri" />
+
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggle_button_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:checkedButton="@+id/header_m"
+                app:layout_constraintEnd_toEndOf="@+id/avatar"
+                app:layout_constraintStart_toStartOf="@+id/avatar"
+                app:layout_constraintTop_toBottomOf="@+id/avatar"
+                app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/header_m"
+                    style="@style/gjiniaButton"
+                    android:layout_width="36dp"
+                    android:layout_height="wrap_content"
+                    android:text="M" />
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/header_f"
+                    style="@style/gjiniaButton"
+                    android:layout_width="36dp"
+                    android:layout_height="wrap_content"
+                    android:text="F" />
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/header_a"
+                    style="@style/gjiniaButton"
+                    android:layout_width="36dp"
+                    android:layout_height="wrap_content"
+                    android:text="ALL" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.github.florent37.shapeofview.shapes.ArcView>

@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.eltonkola.thename.MainActivity">
+
+
+    <item android:id="@+id/action_thumbDown"
+          android:title="Thumb Up"
+          android:orderInCategory="100"
+          android:icon="@drawable/ic_thumb_down_black_24dp"
+          app:showAsAction="always"/>
+
+    <item android:id="@+id/action_thumbUp"
+          android:title="Thumb down"
+          android:icon="@drawable/ic_thumb_up_black_24dp"
+          android:orderInCategory="100"
+          app:showAsAction="always"/>
+    <item android:id="@+id/action_info"
+          android:title="Info"
+          android:icon="@drawable/ic_youtube_searched_for_black_24dp"
+          android:orderInCategory="100"
+          app:showAsAction="always"/>
+    <item android:id="@+id/action_share"
+          android:title="Share"
+          android:icon="@drawable/ic_share_black_24dp"
+          android:orderInCategory="100"
+          app:showAsAction="always"/>
+
+
+</menu>
