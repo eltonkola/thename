@@ -1,27 +1,36 @@
 package com.eltonkola.thename.db
 
 
-import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 import com.eltonkola.thename.model.db.Emri
 import io.reactivex.Completable
-import io.reactivex.Single
 
 @Dao
 interface EmriDao {
 
-//    @Query("SELECT * FROM msg where m_with = :withUser order by m_kur desc")
-//    fun getMsgWithUser(withUser: String): LiveData<List<MsgElement>>
+    @Query("SELECT * FROM namez ORDER BY frequency desc")
+    fun all(): DataSource.Factory<Int, Emri>
 
-//    @Query("SELECT DISTINCT m_with FROM msg order by m_kur desc")
-//    fun getUserTakingWith(): Flowable<List<String>>
 
-    @Query("SELECT * FROM namez")
-    fun getAll(): LiveData<List<Emri>>
+    @Query("SELECT * FROM namez WHERE male == 'true' ORDER BY frequency desc")
+    fun allMale(): DataSource.Factory<Int, Emri>
 
-    @Query("SELECT * FROM namez where thumb == 0 ")
-    fun explore(): Single<List<Emri>>
+    @Query("SELECT * FROM namez WHERE male == 'false' ORDER BY frequency desc")
+    fun allFemale(): DataSource.Factory<Int, Emri>
 
+    @Query("SELECT * FROM namez WHERE favorite == 1 ORDER BY frequency desc")
+    fun allFav(): DataSource.Factory<Int, Emri>
+
+    @Query("SELECT * FROM namez WHERE thumb == 2 ORDER BY frequency desc")
+    fun allThumbed(): DataSource.Factory<Int, Emri>
+
+    @Query("SELECT * FROM namez WHERE name LIKE :query ORDER BY frequency desc")
+    fun kerko(query: String): DataSource.Factory<Int, Emri>
+
+
+    @Query("SELECT * FROM namez WHERE thumb == 0 ORDER BY frequency desc")
+    fun explore(): DataSource.Factory<Int, Emri>
 
     @Update
     fun updateEmri(emri: Emri): Completable

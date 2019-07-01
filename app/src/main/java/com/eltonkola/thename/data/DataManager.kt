@@ -14,13 +14,6 @@ import timber.log.Timber
 
 data class DataManager(val context: Context, val settings: PreManager, val db: EmriDatabase) {
 
-    fun loadExplore(): Single<List<Emri>> {
-        return db.emriAppDao()
-            .explore()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-    }
-
 
     //load main page menu
     fun loadMenu(): Single<List<BaseDataItem>> {

@@ -30,7 +30,7 @@ class ExploreFragment : Fragment() {
     }
 
     private val viewModel: ExploreViewModel by viewModel()
-    private val adapter = CardStackAdapter(){
+    private val adapter = CardStackAdapter() {
         val action = ExploreFragmentDirections.actionExploreToDetails(it)
         findNavController().navigate(action)
     }
@@ -118,11 +118,6 @@ class ExploreFragment : Fragment() {
             adapter.setData(list)
             adapter.notifyDataSetChanged()
         })
-
-
-        viewModel.loadData()
-
-
 
 
 

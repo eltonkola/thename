@@ -1,27 +1,24 @@
 package com.eltonkola.thename.ui.explore
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.eltonkola.thename.data.DataManager
 import com.eltonkola.thename.db.EmriDatabase
 import com.eltonkola.thename.model.db.Emri
 import com.eltonkola.thename.utils.BaseModel
 import com.eltonkola.thename.utils.autoDispose
-import timber.log.Timber
 
-class ExploreViewModel(val dataManager: DataManager, private val db: EmriDatabase) : BaseModel() {
+class ExploreViewModel(private val dataManager: DataManager, db: EmriDatabase) : BaseModel() {
 
-    val dataList = MutableLiveData<List<Emri>>()
+    val dataList: LiveData<PagedList<Emri>>
 
-    fun loadData() {
-        dataManager.loadExplore().subscribe({
-            Timber.d("Nr elements: ${it.size}")
-            dataList.postValue(it)
-        }, {
-            it.printStackTrace()
-        }).autoDispose(this)
-
+    init {
+        val factory: DataSource.Factory<Int, Emri> = db.emriAppDao().explore()
+        val pagedListBuilder = LivePagedListBuilder(factory, 50)
+        dataList = pagedListBuilder.build()
     }
-
 
     fun thumbUp(pos: Int) {
         val emri = dataList.value?.get(pos)

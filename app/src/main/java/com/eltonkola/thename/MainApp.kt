@@ -55,7 +55,7 @@ private val appModule = module {
     single { PreManager(get()) }
 
     viewModel { ExploreViewModel(get(), get()) }
-    viewModel { ListViewModel(get(), get()) }
+    viewModel { ListViewModel(get()) }
     viewModel { MainViewModel(get()) }
 
     viewModel { (withEmri: Emri) -> DetailsViewModel(get(), withEmri, get(), get()) }

@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<com.google.android.material.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginLeft="@dimen/mtrl_card_spacing"
         android:layout_marginTop="@dimen/mtrl_card_spacing"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
-        android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
         android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="#00579B"
->
+        app:cardBackgroundColor="#00579B">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:showIn="@layout/activity_main"
             android:padding="24dp"
-            tools:context=".ui.MainActivity">
+            tools:context=".ui.MainActivity"
+            tools:showIn="@layout/activity_main">
 
         <TextView
                 android:id="@+id/emri_vlera"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
+                android:text="List All"
                 android:textColor="#ffffff"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:text="List All"
-                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

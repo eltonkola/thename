@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eltonkola.adapterz_lib.AdapterZ
@@ -15,9 +17,10 @@ import com.eltonkola.adapterz_lib.CompositeViewRenderZ
 import com.eltonkola.adapterz_lib.ViewRenderZ
 import com.eltonkola.thename.R
 import com.eltonkola.thename.model.*
-import com.eltonkola.thename.utils.toast
+import com.eltonkola.thename.ui.list.ListViewModel
+import com.eltonkola.thename.utils.HorizontalGridDecoration
+import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.android.synthetic.main.main_header.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -63,6 +66,12 @@ class MainFragment : Fragment() {
         recyclerView.adapter = adapter
 
         viewModel.menu.observe(this, Observer { list ->
+            if (list.isEmpty()) {
+                progress.visibility = View.VISIBLE
+            } else {
+                progress.visibility = View.GONE
+            }
+
             adapter.submitList(list)
         })
 
@@ -74,18 +83,42 @@ class MainFragment : Fragment() {
 //            .show()
 
 
-        toggle_button_group.addOnButtonCheckedListener { group, checkedId, isChecked ->
-            toast("Selected: $checkedId")
-        }
+//        toggle_button_group.addOnButtonCheckedListener { group, checkedId, isChecked ->
+//            toast("Selected: $checkedId")
+//        }
     }
 
 
     private fun bindFavoritedItem(): CompositeViewRenderZ<FavoritedItem> {
         return CompositeViewRenderZ(
-            R.layout.row_favorites, { _, _ -> },
+            R.layout.row_favorites, { vh, model ->
+
+                vh.itemView.findViewById<TextView>(R.id.container_icon).setOnClickListener {
+
+                    val action =
+                        MainFragmentDirections.actionMainToListAll(ListViewModel.Shfleto.FAVORITES.vlera)
+                    findNavController().navigate(action)
+
+                }
+
+
+            },
             R.id.childRecycler
         ) { recycler ->
 
+            val nrRows = 3
+            recycler.layoutManager =
+                GridLayoutManager(context, nrRows, GridLayoutManager.HORIZONTAL, false)
+            recycler.setHasFixedSize(true)
+            val pagePadding = context!!.resources.getDimension(R.dimen.margin_start_end)
+            val itemPadding = context!!.resources.getDimension(R.dimen.padding_horizontal_grid)
+            recycler.addItemDecoration(
+                HorizontalGridDecoration(
+                    pagePadding.toInt(),
+                    itemPadding.toInt(),
+                    nrRows
+                )
+            )
         }
     }
 
@@ -115,8 +148,11 @@ class MainFragment : Fragment() {
 
     private fun bindListAllItem(): ViewRenderZ<ListAllItem> {
         return ViewRenderZ(R.layout.row_list_all) { vh, _ ->
+
             vh.itemView.setOnClickListener {
-                findNavController().navigate(R.id.action_main_to_list_all)
+                val action =
+                    MainFragmentDirections.actionMainToListAll(ListViewModel.Shfleto.ALL.vlera)
+                findNavController().navigate(action)
             }
         }
     }
@@ -129,10 +165,33 @@ class MainFragment : Fragment() {
 
     private fun bindThumbedListItem(): CompositeViewRenderZ<ThumbedListItem> {
         return CompositeViewRenderZ(
-            R.layout.row_thumbed, { _, _ -> },
+            R.layout.row_thumbed, { vh, _ ->
+
+                vh.itemView.findViewById<TextView>(R.id.container_icon).setOnClickListener {
+
+                    val action =
+                        MainFragmentDirections.actionMainToListAll(ListViewModel.Shfleto.THUMBED.vlera)
+                    findNavController().navigate(action)
+
+                }
+
+
+            },
             R.id.childRecycler
         ) { recycler ->
-
+            val nrRows = 1
+            recycler.layoutManager =
+                GridLayoutManager(context, nrRows, GridLayoutManager.HORIZONTAL, false)
+            recycler.setHasFixedSize(true)
+            val pagePadding = context!!.resources.getDimension(R.dimen.margin_start_end)
+            val itemPadding = context!!.resources.getDimension(R.dimen.padding_horizontal_grid)
+            recycler.addItemDecoration(
+                HorizontalGridDecoration(
+                    pagePadding.toInt(),
+                    itemPadding.toInt(),
+                    nrRows
+                )
+            )
         }
     }
 
@@ -151,7 +210,11 @@ class MainFragment : Fragment() {
     private fun bindThumbedSubListElementItem(): ViewRenderZ<ThumbedSubListElementItem> {
         return ViewRenderZ(R.layout.row_thumbed_emri) { vh, model ->
             val title_header = vh.itemView.findViewById<TextView>(R.id.emri_vlera)
+            val emri_frequency = vh.itemView.findViewById<TextView>(R.id.emri_frequency)
+
             title_header.setText(model.emri.name)
+            emri_frequency.setText(model.emri.frequency.toString())
+
             vh.itemView.setOnClickListener {
                 val action = MainFragmentDirections.actionMainToDetails(model.emri)
                 findNavController().navigate(action)

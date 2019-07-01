@@ -3,4 +3,10 @@
     <color name="colorPrimary">#0480E1</color>
     <color name="colorPrimaryDark">#035F6F</color>
     <color name="colorAccent">#FFEB3B</color>
+
+    <color name="titulliDark">#1F1F1F</color>
+    <color name="titulliMoreDark">#494848</color>
+
+    <color name="transparent">#ffffffff</color>
+
 </resources>

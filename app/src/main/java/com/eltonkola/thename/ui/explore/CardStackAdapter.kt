@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.eltonkola.thename.R
 import com.eltonkola.thename.model.db.Emri
+import com.eltonkola.thename.ui.list.EmriDiffCallback
 
 class CardStackAdapter(
     private var emrat: List<Emri> = emptyList(),
     val onCardClick: (Emri) -> Any
-) : RecyclerView.Adapter<ViewHolderX>() {
+) : PagedListAdapter<Emri, ViewHolderX>(EmriDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderX {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,7 +27,7 @@ class CardStackAdapter(
         holder.emri_gjinia.text = spot.male.toString()
         holder.emri_count.text = spot.frequency.toString()
 
-        holder.itemView.setOnClickListener { v ->
+        holder.itemView.setOnClickListener { _ ->
             onCardClick.invoke(spot)
         }
     }

@@ -1,3 +1,9 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="margin_start_end">24dp</dimen>
+    <dimen name="padding_horizontal_grid">12dp</dimen>
+
+
 </resources>
