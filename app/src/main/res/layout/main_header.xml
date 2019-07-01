@@ -116,5 +116,42 @@
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
+        <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/r_m"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toggle_button_group">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="It is a: "
+                    android:textColor="@color/colorAccent" />
+
+            <RadioButton
+                    android:id="@+id/r_m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="boy"
+                    android:textColor="@color/colorAccent" />
+
+            <RadioButton
+                    android:id="@+id/r_f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="girl"
+                    android:textColor="@color/colorAccent" />
+
+            <RadioButton
+                    android:id="@+id/r_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="surprise"
+                    android:textColor="@color/colorAccent" />
+        </RadioGroup>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.github.florent37.shapeofview.shapes.ArcView>
