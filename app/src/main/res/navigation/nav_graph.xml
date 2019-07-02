@@ -69,7 +69,7 @@
 
     <fragment
             android:id="@+id/detailsFragment"
-            android:name="com.eltonkola.thename.ui.details.DetailsFragment"
+            android:name="com.eltonkola.thename.ui.about.DetailsFragment"
             android:label="details"
             tools:layout="@layout/fragment_details">
 

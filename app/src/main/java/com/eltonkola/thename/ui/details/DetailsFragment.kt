@@ -17,6 +17,7 @@ import com.db.chart.tooltip.Tooltip
 import com.db.chart.util.Tools
 import com.eltonkola.thename.R
 import com.eltonkola.thename.model.db.Emri
+import com.eltonkola.thename.ui.about.DetailsFragmentArgs
 import kotlinx.android.synthetic.main.fragment_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -84,11 +85,15 @@ class DetailsFragment : Fragment() {
 //        )
 
         //chart
-        val barSet = LineSet(chartData.keys.toTypedArray(), chartData.values.map { it.toFloat() }.toFloatArray())
+        val barSet = LineSet(
+            chartData.keys.toTypedArray(),
+            chartData.values.map { it.toFloat() }.toFloatArray()
+        )
 
         val mLabels = arrayOf("A", "B", "C", "D")
 
-        val mValues = arrayOf(floatArrayOf(6.5f, 8.5f, 2.5f, 10f), floatArrayOf(7.5f, 3.5f, 5.5f, 4f))
+        val mValues =
+            arrayOf(floatArrayOf(6.5f, 8.5f, 2.5f, 10f), floatArrayOf(7.5f, 3.5f, 5.5f, 4f))
 
         // Data
 //        val barSet = LineSet(mLabels, mValues[0])

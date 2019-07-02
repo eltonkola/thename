@@ -19,19 +19,28 @@
             tools:context=".ui.MainActivity"
             tools:showIn="@layout/activity_main">
 
-        <TextView
-                android:id="@+id/emri_vlera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="List All"
-                android:textColor="#ffffff"
-                android:textSize="22sp"
-                android:textStyle="bold"
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icona"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_icon_butterfly_all" />
+
+        <TextView
+                android:id="@+id/titull"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="List all names"
+                android:textColor="#ffffff"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/icona"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/icona"
+                app:layout_constraintTop_toTopOf="@+id/icona" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

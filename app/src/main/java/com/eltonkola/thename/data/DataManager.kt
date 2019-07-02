@@ -4,7 +4,6 @@ import android.content.Context
 import com.eltonkola.adapterz_lib.BaseDataItem
 import com.eltonkola.thename.db.EmriDatabase
 import com.eltonkola.thename.model.*
-import com.eltonkola.thename.model.db.Emri
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -42,7 +41,7 @@ data class DataManager(val context: Context, val settings: PreManager, val db: E
             }
 
             if (thumbed.isNotEmpty()) {
-                menuItems.add(ThumbedListItem(thumbed.chunked(5).map {
+                menuItems.add(ThumbedListItem(thumbed.chunked(10).map {
                     ThumbedSubListItem(it.map {
                         ThumbedSubListElementItem(
                             it
