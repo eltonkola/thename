@@ -5,5 +5,8 @@
     <dimen name="margin_start_end">24dp</dimen>
     <dimen name="padding_horizontal_grid">12dp</dimen>
 
+    <dimen name="main_padding">16dp</dimen>
+    <dimen name="main_gutter">8dp</dimen>
+
 
 </resources>

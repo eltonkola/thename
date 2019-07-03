@@ -109,8 +109,8 @@ class MainFragment : Fragment() {
             recycler.layoutManager =
                 GridLayoutManager(context, nrRows, GridLayoutManager.HORIZONTAL, false)
             recycler.setHasFixedSize(true)
-            val pagePadding = context!!.resources.getDimension(R.dimen.margin_start_end)
-            val itemPadding = context!!.resources.getDimension(R.dimen.padding_horizontal_grid)
+            val pagePadding = context!!.resources.getDimension(R.dimen.main_padding)
+            val itemPadding = context!!.resources.getDimension(R.dimen.main_gutter)
             recycler.addItemDecoration(
                 HorizontalGridDecoration(
                     pagePadding.toInt(),
@@ -190,8 +190,8 @@ class MainFragment : Fragment() {
             recycler.layoutManager =
                 GridLayoutManager(context, nrRows, GridLayoutManager.HORIZONTAL, false)
             recycler.setHasFixedSize(true)
-            val pagePadding = context!!.resources.getDimension(R.dimen.margin_start_end)
-            val itemPadding = context!!.resources.getDimension(R.dimen.padding_horizontal_grid)
+            val pagePadding = context!!.resources.getDimension(R.dimen.main_padding)
+            val itemPadding = context!!.resources.getDimension(R.dimen.main_gutter)
             recycler.addItemDecoration(
                 HorizontalGridDecoration(
                     pagePadding.toInt(),

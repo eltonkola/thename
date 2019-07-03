@@ -4,9 +4,8 @@
         android:id="@+id/header_content"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:layout_marginBottom="16dp"
         android:elevation="4dp"
-        app:shape_arc_height="16dp"
+        app:shape_arc_height="-16dp"
         app:shape_arc_position="bottom">
 
     <androidx.constraintlayout.widget.ConstraintLayout

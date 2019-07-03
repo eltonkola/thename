@@ -17,7 +17,6 @@ import com.db.chart.tooltip.Tooltip
 import com.db.chart.util.Tools
 import com.eltonkola.thename.R
 import com.eltonkola.thename.model.db.Emri
-import com.eltonkola.thename.ui.about.DetailsFragmentArgs
 import kotlinx.android.synthetic.main.fragment_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf

@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
 
 
+        <!--        <item name="android:statusBarColor">@color/titulliDark</item>-->
+
         <!-- New MaterialComponents attributes. -->
         <!--        <item name="colorPrimaryVariant">@color/my_app_primary_variant_color</item>-->
         <!--        <item name="colorSecondaryVariant">@color/my_app_secondary_variant_color</item>-->

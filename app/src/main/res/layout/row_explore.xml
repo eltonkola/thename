@@ -1,116 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.florent37.shapeofview.shapes.ArcView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/header_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="@dimen/mtrl_card_spacing"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        android:layout_marginStart="@dimen/main_padding"
+        android:layout_marginEnd="@dimen/main_padding"
         android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="#FF9800">
+        android:elevation="4dp"
+        app:shape_arc_height="16dp"
+        app:shape_arc_position="top">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp"
-            tools:showIn="@layout/activity_main">
 
-        <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icona"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                app:layout_constraintBottom_toTopOf="@+id/separator"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_icon_bunny_explore" />
 
-        <TextView
-                android:id="@+id/titull"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Explore Names"
-                android:textColor="#ffffff"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/icona"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/icona"
-                app:layout_constraintTop_toTopOf="@+id/icona" />
+            app:cardBackgroundColor="#FF9800">
 
-        <View
-                android:id="@+id/separator"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="#39FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/icona" />
-
-
-        <TextView
-                android:id="@+id/nrTotal"
-                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Total"
-                android:textColor="#ffffff"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/icon_boy"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/icon_boy" />
+                android:padding="24dp"
+                tools:showIn="@layout/activity_main">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/icona"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    app:layout_constraintBottom_toTopOf="@+id/separator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_icon_bunny_explore" />
+
+            <TextView
+                    android:id="@+id/titull"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Explore Names"
+                    android:textColor="#ffffff"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/icona"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icona"
+                    app:layout_constraintTop_toTopOf="@+id/icona" />
+
+            <View
+                    android:id="@+id/separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#39FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/icona" />
 
 
-        <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon_boy"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/mNr"
-                app:layout_constraintTop_toBottomOf="@+id/separator"
-                app:srcCompat="@drawable/ic_icon_baby_boy" />
-
-        <TextView
-                android:id="@+id/mNr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="1"
-                android:textColor="#ffffff"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/icon_boy"
-                app:layout_constraintEnd_toStartOf="@+id/icon_girl"
-                app:layout_constraintTop_toTopOf="@+id/icon_boy" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon_girl"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/fNr"
-                app:layout_constraintTop_toBottomOf="@+id/separator"
-                app:srcCompat="@drawable/ic_icon_baby_girl"
-
-                />
-
-        <TextView
-                android:id="@+id/fNr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textColor="#ffffff"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/icon_girl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/icon_girl" />
+            <TextView
+                    android:id="@+id/nrTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/icon_boy"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/icon_boy" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/icon_boy"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/mNr"
+                    app:layout_constraintTop_toBottomOf="@+id/separator"
+                    app:srcCompat="@drawable/ic_icon_baby_boy" />
 
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                    android:id="@+id/mNr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/icon_boy"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_girl"
+                    app:layout_constraintTop_toTopOf="@+id/icon_boy" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/icon_girl"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/fNr"
+                    app:layout_constraintTop_toBottomOf="@+id/separator"
+                    app:srcCompat="@drawable/ic_icon_baby_girl"
+
+                    />
+
+            <TextView
+                    android:id="@+id/fNr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/icon_girl"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/icon_girl" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</com.github.florent37.shapeofview.shapes.ArcView>

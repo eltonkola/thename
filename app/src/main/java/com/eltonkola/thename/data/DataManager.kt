@@ -32,13 +32,17 @@ data class DataManager(val context: Context, val settings: PreManager, val db: E
             Timber.d(">>>>>>>>>>>>>> menu end >>>>>>>>>>>>>")
 
             val menuItems = mutableListOf<BaseDataItem>()
-            if (preferuara.isNotEmpty()) {
-                menuItems.add(FavoritedItem(preferuara.map { FavoriteItem(it) }))
-            }
+
 
             if (mCount > 0 || fCount > 0) {
                 menuItems.add(ExploreItem(mCount, fCount))
             }
+
+
+            if (preferuara.isNotEmpty()) {
+                menuItems.add(FavoritedItem(preferuara.map { FavoriteItem(it) }))
+            }
+
 
             if (thumbed.isNotEmpty()) {
                 menuItems.add(ThumbedListItem(thumbed.chunked(10).map {
