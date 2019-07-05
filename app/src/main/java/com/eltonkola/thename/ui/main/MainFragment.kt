@@ -19,6 +19,7 @@ import com.eltonkola.thename.model.*
 import com.eltonkola.thename.ui.list.ListViewModel
 import com.eltonkola.thename.utils.HorizontalGridDecoration
 import com.eltonkola.thename.utils.formatFrequency
+import com.eltonkola.thename.utils.visibility
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -65,11 +66,9 @@ class MainFragment : Fragment() {
         recyclerView.adapter = adapter
 
         viewModel.menu.observe(this, Observer { list ->
-            if (list.isEmpty()) {
-                progress.visibility = View.VISIBLE
-            } else {
-                progress.visibility = View.GONE
-            }
+
+            progress.visibility = list.isEmpty().visibility
+            content_main.visibility = list.isNotEmpty().visibility
 
             adapter.submitList(list)
         })
@@ -90,7 +89,7 @@ class MainFragment : Fragment() {
 
     private fun bindFavoritedItem(): CompositeViewRenderZ<FavoritedItem> {
         return CompositeViewRenderZ(
-            R.layout.row_favorites, { vh, model ->
+            R.layout.main_row_favorites, { vh, model ->
 
                 vh.itemView.findViewById<TextView>(R.id.container_icon).setOnClickListener {
 
@@ -122,7 +121,7 @@ class MainFragment : Fragment() {
     }
 
     private fun bindFavoriteItem(): ViewRenderZ<FavoriteItem> {
-        return ViewRenderZ(R.layout.row_favorite) { vh, model ->
+        return ViewRenderZ(R.layout.main_row_favorite) { vh, model ->
             val title_header = vh.itemView.findViewById<TextView>(R.id.emri_vlera)
             title_header.setText(model.emri.name)
             vh.itemView.setOnClickListener {
@@ -133,7 +132,7 @@ class MainFragment : Fragment() {
     }
 
     private fun bindExploreItem(): ViewRenderZ<ExploreItem> {
-        return ViewRenderZ(R.layout.row_explore) { vh, model ->
+        return ViewRenderZ(R.layout.main_row_explore) { vh, model ->
             val mNr = vh.itemView.findViewById<TextView>(R.id.mNr)
             val fNr = vh.itemView.findViewById<TextView>(R.id.fNr)
             val nrTotal = vh.itemView.findViewById<TextView>(R.id.nrTotal)
@@ -154,7 +153,7 @@ class MainFragment : Fragment() {
 
 
     private fun bindListAllItem(): ViewRenderZ<ListAllItem> {
-        return ViewRenderZ(R.layout.row_list_all) { vh, _ ->
+        return ViewRenderZ(R.layout.main_row_list_all) { vh, _ ->
 
             vh.itemView.setOnClickListener {
                 val action =
@@ -172,7 +171,7 @@ class MainFragment : Fragment() {
 
     private fun bindThumbedListItem(): CompositeViewRenderZ<ThumbedListItem> {
         return CompositeViewRenderZ(
-            R.layout.row_thumbed, { vh, _ ->
+            R.layout.main_row_thumbed, { vh, _ ->
 
                 vh.itemView.findViewById<TextView>(R.id.container_icon).setOnClickListener {
 
@@ -204,7 +203,7 @@ class MainFragment : Fragment() {
 
     private fun bindThumbedSubListItem(): CompositeViewRenderZ<ThumbedSubListItem> {
         return CompositeViewRenderZ(
-            R.layout.row_thumbed_list, { _, _ -> },
+            R.layout.main_row_thumbed_list, { _, _ -> },
             R.id.childRecyclerList
         ) { recycler ->
             recycler.layoutManager =
@@ -215,7 +214,7 @@ class MainFragment : Fragment() {
 
 
     private fun bindThumbedSubListElementItem(): ViewRenderZ<ThumbedSubListElementItem> {
-        return ViewRenderZ(R.layout.row_thumbed_emri) { vh, model ->
+        return ViewRenderZ(R.layout.main_row_thumbed_emri) { vh, model ->
             val title_header = vh.itemView.findViewById<TextView>(R.id.emri_vlera)
             val emri_frequency = vh.itemView.findViewById<TextView>(R.id.emri_frequency)
 
