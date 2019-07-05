@@ -32,6 +32,12 @@ interface EmriDao {
     @Query("SELECT * FROM namez WHERE thumb == 0 ORDER BY frequency desc")
     fun explore(): DataSource.Factory<Int, Emri>
 
+    @Query("SELECT * FROM namez WHERE thumb == 0 and male == 'true' ORDER BY frequency desc")
+    fun exploreM(): DataSource.Factory<Int, Emri>
+
+    @Query("SELECT * FROM namez WHERE thumb == 0 and male == 'false' ORDER BY frequency desc")
+    fun exploreF(): DataSource.Factory<Int, Emri>
+
     @Update
     fun updateEmri(emri: Emri): Completable
 

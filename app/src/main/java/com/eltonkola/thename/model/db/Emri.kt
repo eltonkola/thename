@@ -18,7 +18,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Emri(
     @PrimaryKey @ColumnInfo(name = "name") var name: String,
-    @ColumnInfo(name = "male") var male: Boolean,
+    @ColumnInfo(name = "male") var male: Int,
     @ColumnInfo(name = "favorite") var favorite: Boolean,
     @ColumnInfo(name = "thumb") var thumb: Int,
     @ColumnInfo(name = "frequency") var frequency: Int,
@@ -28,6 +28,11 @@ data class Emri(
     //    @PrimaryKey(autoGenerate = true)
 //    var uid: Int = 0
 //
+
+    fun isMale(): Boolean {
+        return male == 1
+    }
+
     fun getPerYerData(): Map<String, String> {
 
         val type = object : TypeToken<Map<String, String>>() {}.type

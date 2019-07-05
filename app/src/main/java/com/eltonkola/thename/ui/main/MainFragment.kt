@@ -118,9 +118,21 @@ class MainFragment : Fragment() {
 
         viewModel.gjinia.observe(this, Observer {
             when (it) {
-                Gjinia.ALL -> r_a.isChecked = true
-                Gjinia.MASHKUll -> r_m.isChecked = true
-                Gjinia.FEMER -> r_f.isChecked = true
+                Gjinia.ALL -> {
+                    r_a.isChecked = true
+                    overlay_layer.setBackgroundResource(R.drawable.gradient_all)
+                    baby_avatar.setImageResource(R.drawable.pic_2)
+                }
+                Gjinia.MASHKUll -> {
+                    r_m.isChecked = true
+                    overlay_layer.setBackgroundResource(R.drawable.gradient_boy)
+                    baby_avatar.setImageResource(R.drawable.ic_icon_baby_boy)
+                }
+                Gjinia.FEMER -> {
+                    r_f.isChecked = true
+                    overlay_layer.setBackgroundResource(R.drawable.gradient_girl)
+                    baby_avatar.setImageResource(R.drawable.ic_icon_baby_girl)
+                }
             }
         })
 

@@ -18,12 +18,17 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/pic_1" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:id="@+id/overlay_layer"
+                android:layout_height="match_parent" />
+
         <ImageView
                 android:id="@+id/logo"
                 android:layout_width="46dp"
                 android:layout_height="46dp"
                 android:layout_marginTop="16dp"
-                android:src="@mipmap/ic_launcher_round"
+                android:src="@mipmap/ic_launcher_foreground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,10 +45,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/logo"
                 app:shape_circle_borderColor="@color/titulliMoreDark"
-                app:shape_circle_borderWidth="1dp">
+                app:shape_circle_borderWidth="0dp">
 
             <ImageView
-
+                    android:id="@+id/baby_avatar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"

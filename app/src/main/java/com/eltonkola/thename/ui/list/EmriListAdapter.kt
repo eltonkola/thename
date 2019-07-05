@@ -53,7 +53,7 @@ class EmriViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var tvName: TextView = view.emri_vlera
 
     fun bind(emri: Emri) {
-        tvName.text = emri.name + " - " + emri.frequency
+        tvName.text = emri.name + " - " + emri.frequency + " - " + emri.male + " - " + emri.isMale()
     }
 
     fun clear() {

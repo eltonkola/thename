@@ -30,9 +30,9 @@ class ExploreViewModel(
         dataList = Transformations.switchMap(gjinia) { type ->
             LivePagedListBuilder(
                 when (type) {
-                    Gjinia.ALL -> db.emriAppDao().all()
-                    Gjinia.MASHKUll -> db.emriAppDao().allMale()
-                    Gjinia.FEMER -> db.emriAppDao().allFemale()
+                    Gjinia.ALL -> db.emriAppDao().explore()
+                    Gjinia.MASHKUll -> db.emriAppDao().exploreM()
+                    Gjinia.FEMER -> db.emriAppDao().exploreF()
                 }, 50
             ).build()
 

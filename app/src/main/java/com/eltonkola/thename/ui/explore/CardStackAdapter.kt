@@ -36,7 +36,7 @@ class CardStackAdapter(
         holder.emri_mbiemri.text = mbiemri
         holder.emri_count.text = emriElem.frequency.formatFrequency()
 
-        if (emriElem.male) {
+        if (emriElem.isMale()) {
             holder.card_root.setCardBackgroundColor(boyColor)
         } else {
             holder.card_root.setCardBackgroundColor(girlColor)

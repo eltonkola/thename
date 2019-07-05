@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <color name="primaryColor">#880e4f</color>
+    <color name="primaryLightColor">#bc477b</color>
+    <color name="primaryDarkColor">#560027</color>
+    <color name="secondaryColor">#c2185b</color>
+    <color name="secondaryLightColor">#fa5788</color>
+    <color name="secondaryDarkColor">#8c0032</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
+
+
     <color name="colorPrimary">#0480E1</color>
     <color name="colorPrimaryDark">#035F6F</color>
     <color name="colorAccent">#FFEB3B</color>
@@ -9,10 +21,15 @@
 
     <color name="cardGray">#DDDDDD</color>
 
-    <color name="transparent">#ffffffff</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <color name="color_boy">#3F51B5</color>
     <color name="color_girl">#F501FA</color>
+
+
+    <color name="color_boy_gradient">#800023EF</color>
+    <color name="color_girl_gradient">#98F501FA</color>
+    <color name="color_all_gradient">#83000000</color>
 
 
 </resources>

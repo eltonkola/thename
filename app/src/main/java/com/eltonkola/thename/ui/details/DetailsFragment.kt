@@ -77,9 +77,9 @@ class DetailsFragment : Fragment() {
 
     private fun renderEmri(emri: Emri) {
         emri_txt.text = emri.name
-        gjinia_txt.text = if (emri.male) "M" else "F"
+        gjinia_txt.text = if (emri.isMale()) "M" else "F"
 
-        if (emri.male) {
+        if (emri.isMale()) {
             avatar_img.setImageResource(R.drawable.ic_icon_baby_boy)
         } else {
             avatar_img.setImageResource(R.drawable.ic_icon_baby_girl)
