@@ -3,8 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.about.DetailsFragment">
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -40,8 +39,8 @@
                     android:layout_marginTop="70dp"
                     android:fontFamily="sans-serif-condensed"
                     android:text="Hugh Jackman"
-                    android:textColor="@android:color/white"
-                    android:textSize="25sp" />
+                    android:textColor="@color/titulliDark"
+                    android:textSize="28sp" />
 
 
             <TextView
@@ -53,11 +52,34 @@
                     android:layout_marginTop="110dp"
                     android:fontFamily="sans-serif-light"
                     android:text="PRODUCER"
-                    android:textColor="@android:color/white"
-                    android:textSize="28sp"
+                    android:textColor="@color/titulliDark"
+                    android:textSize="26sp"
                     android:textStyle="bold" />
 
         </com.github.florent37.shapeofview.shapes.DiagonalView>
+
+        <com.github.florent37.shapeofview.shapes.CircleView
+                android:id="@+id/avatar"
+                android:layout_width="112dp"
+                android:layout_height="112dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:elevation="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/numrat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:shape_circle_borderWidth="0dp">
+
+            <!--            app:shape_circle_borderColor="@color/titulliMoreDark"-->
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/avatar_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pic_2" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
 
         <LinearLayout
                 android:id="@+id/numrat"

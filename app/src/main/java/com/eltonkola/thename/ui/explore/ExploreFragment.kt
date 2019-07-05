@@ -30,10 +30,6 @@ class ExploreFragment : Fragment() {
     }
 
     private val viewModel: ExploreViewModel by viewModel()
-    private val adapter = CardStackAdapter() {
-        val action = ExploreFragmentDirections.actionExploreToDetails(it)
-        findNavController().navigate(action)
-    }
 
     private val listener = object : CardStackListener {
 
@@ -75,6 +71,13 @@ class ExploreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val adapter = CardStackAdapter(context!!, viewModel.getMbiemri()) {
+            val action = ExploreFragmentDirections.actionExploreToDetails(it)
+            findNavController().navigate(action)
+        }
+
+
 
         layoutManager.setStackFrom(StackFrom.None)
         layoutManager.setVisibleCount(3)

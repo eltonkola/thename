@@ -1,69 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<com.google.android.material.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_root"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="@dimen/mtrl_card_spacing"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
-        android:layout_margin="24dp"
-        app:cardBackgroundColor="#FF9800"
+        android:layout_height="match_parent"
         android:elevation="12dp"
->
+        app:cardBackgroundColor="#009688"
+        app:cardCornerRadius="10dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:showIn="@layout/activity_main"
-            android:padding="24dp"
-            tools:context=".ui.MainActivity">
+            android:layout_height="match_parent">
+
+        <com.github.florent37.shapeofview.shapes.ArcView
+                android:id="@+id/koka"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:elevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shape_arc_height="-16dp"
+                app:shape_arc_position="bottom">
+
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pic_1" />
+
+        </com.github.florent37.shapeofview.shapes.ArcView>
+
 
         <TextView
                 android:id="@+id/emri_vlera"
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:text="@string/app_name"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/emri_mbiemri"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/koka" />
 
         <TextView
-                android:id="@+id/emri_gjinia"
+                android:id="@+id/emri_mbiemri"
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:text="@string/app_name"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/emri_count"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emri_vlera"/>
+                app:layout_constraintTop_toBottomOf="@+id/emri_vlera" />
+
 
         <TextView
                 android:id="@+id/emri_count"
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:textColor="#ffffff"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="#ABFFFFFF"
+                android:padding="16dp"
+                android:text="@string/app_name"
+                android:textColor="@color/titulliDark"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:text="@string/app_name"
-                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emri_gjinia"/>
+                app:layout_constraintRight_toRightOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/emri_count"
+                app:layout_constraintEnd_toEndOf="@+id/emri_count"
+                app:layout_constraintTop_toTopOf="@+id/emri_count"
+                app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+                app:tint="@color/titulliDark" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

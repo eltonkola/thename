@@ -15,12 +15,15 @@ import com.eltonkola.adapterz_lib.AdapterZ
 import com.eltonkola.adapterz_lib.CompositeViewRenderZ
 import com.eltonkola.adapterz_lib.ViewRenderZ
 import com.eltonkola.thename.R
+import com.eltonkola.thename.data.PreManager
 import com.eltonkola.thename.model.*
 import com.eltonkola.thename.ui.list.ListViewModel
 import com.eltonkola.thename.utils.HorizontalGridDecoration
 import com.eltonkola.thename.utils.formatFrequency
 import com.eltonkola.thename.utils.visibility
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.main_header.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -58,6 +61,32 @@ class MainFragment : Fragment() {
             })
         })
 
+
+        mbiemri.setOnClickListener {
+
+
+            val dialogView = layoutInflater.inflate(R.layout.main_edit_lastname, null)
+            val textLastname = dialogView.findViewById<TextView>(R.id.text_lastname)
+
+            if (viewModel.mbiemri.value == PreManager.MBIEMRI_EMPTY) {
+                textLastname.text = viewModel.mbiemri.value
+            }
+
+            val dialog = MaterialAlertDialogBuilder(context)
+                .setTitle("Update the last name")
+                .setView(dialogView)
+                .setPositiveButton(
+                    "Update"
+                ) { dialog, _ ->
+
+                    viewModel.updateLastName(textLastname.text.toString())
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Cancel", null)
+
+//            text1.text
+            dialog.show()
+        }
         //list all
         adapter.addRenderer(bindListAllItem())
 
@@ -71,6 +100,28 @@ class MainFragment : Fragment() {
             content_main.visibility = list.isNotEmpty().visibility
 
             adapter.submitList(list)
+        })
+
+
+        gjinia_group.setOnCheckedChangeListener { group, checkedId ->
+            val gjiniaEre = if (r_m.isChecked) "m" else if (r_f.isChecked) "f" else "a"
+            viewModel.updateGjinia(Gjinia.getGjinia(gjiniaEre))
+        }
+
+        viewModel.emri.observe(this, Observer {
+            emri.text = it
+        })
+
+        viewModel.mbiemri.observe(this, Observer {
+            mbiemri.text = it
+        })
+
+        viewModel.gjinia.observe(this, Observer {
+            when (it) {
+                Gjinia.ALL -> r_a.isChecked = true
+                Gjinia.MASHKUll -> r_m.isChecked = true
+                Gjinia.FEMER -> r_f.isChecked = true
+            }
         })
 
 

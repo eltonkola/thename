@@ -63,12 +63,28 @@ class DetailsFragment : Fragment() {
             renderEmri(it)
         })
 
+        viewModel.mbiemri.observe(this, Observer {
+            Timber.d("render mbiemri $it")
+            mbiemri_txt.text = it
+        })
+
+
+        avatar_img
+
+
     }
 
 
     private fun renderEmri(emri: Emri) {
         emri_txt.text = emri.name
         gjinia_txt.text = if (emri.male) "M" else "F"
+
+        if (emri.male) {
+            avatar_img.setImageResource(R.drawable.ic_icon_baby_boy)
+        } else {
+            avatar_img.setImageResource(R.drawable.ic_icon_baby_girl)
+        }
+
         frekuenca_txt.text = emri.frequency.toString()
         yeras_txt.text = "TODO - info"
 

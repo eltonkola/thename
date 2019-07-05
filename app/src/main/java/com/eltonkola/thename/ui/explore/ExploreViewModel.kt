@@ -1,23 +1,42 @@
 package com.eltonkola.thename.ui.explore
 
 import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.eltonkola.thename.data.DataManager
+import com.eltonkola.thename.data.PreManager
 import com.eltonkola.thename.db.EmriDatabase
+import com.eltonkola.thename.model.Gjinia
 import com.eltonkola.thename.model.db.Emri
 import com.eltonkola.thename.utils.BaseModel
 import com.eltonkola.thename.utils.autoDispose
 
-class ExploreViewModel(private val dataManager: DataManager, db: EmriDatabase) : BaseModel() {
+class ExploreViewModel(
+    private val dataManager: DataManager,
+    db: EmriDatabase,
+    private val preManager: PreManager
+) : BaseModel() {
 
     val dataList: LiveData<PagedList<Emri>>
 
+    private val gjinia = MutableLiveData<Gjinia>()
+
     init {
-        val factory: DataSource.Factory<Int, Emri> = db.emriAppDao().explore()
-        val pagedListBuilder = LivePagedListBuilder(factory, 50)
-        dataList = pagedListBuilder.build()
+
+        gjinia.value = preManager.getGjinia()
+
+        dataList = Transformations.switchMap(gjinia) { type ->
+            LivePagedListBuilder(
+                when (type) {
+                    Gjinia.ALL -> db.emriAppDao().all()
+                    Gjinia.MASHKUll -> db.emriAppDao().allMale()
+                    Gjinia.FEMER -> db.emriAppDao().allFemale()
+                }, 50
+            ).build()
+
+        }
     }
 
     fun thumbUp(pos: Int) {
@@ -51,6 +70,10 @@ class ExploreViewModel(private val dataManager: DataManager, db: EmriDatabase) :
             }, {
             }).autoDispose(this)
         }
+    }
+
+    fun getMbiemri(): String {
+        return preManager.getMbiemri()
     }
 
 

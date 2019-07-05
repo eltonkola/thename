@@ -20,6 +20,10 @@ class DetailsViewModel(
         value = emri_fillestar
     }
 
+    val mbiemri = MutableLiveData<String>().apply {
+        value = prefManager.getMbiemri()
+    }
+
     fun thumbUp() {
 
         emri.value?.let { emrix ->
